@@ -1,5 +1,7 @@
 import java.util.List;
 
+
+
 /**
  * Represents a Node in a doubly linked list.
  */
@@ -19,8 +21,9 @@ public class Node {
    *
    * @param value The value to store in this node.
    */
-  public Node(int value) {
+  public Node(int value ) {
     this.value = value;
+    
   }
 
   /**
@@ -39,6 +42,34 @@ public class Node {
    */
   public Node(List<Integer> list) {
     // TODO: implement this
+    if (list == null || list.isEmpty()) {
+      throw new IllegalArgumentException("list cannot be empty");
+    }
+   
+
+    this.value = list.get(0);
+    this.next = null;
+    Node last = this;
+
+    for(int i = 1; i < list.size(); i++) {
+    
+      Node newNode = new Node(list.get(i));
+      
+      newNode.prev= last;
+      last.next = newNode;
+      last = newNode;
+    
+    //   Node current = head;
+
+    //   while(current != null){
+    //   current = current.next;
+    // }
+    //   current.next = newNode;
+    //   newNode.prev = current;
+
+    }
+
+
   }
 
   /**
