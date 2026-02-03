@@ -59,13 +59,6 @@ public class Node {
       last.next = newNode;
       last = newNode;
     
-    //   Node current = head;
-
-    //   while(current != null){
-    //   current = current.next;
-    // }
-    //   current.next = newNode;
-    //   newNode.prev = current;
 
     }
 
