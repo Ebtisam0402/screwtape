@@ -42,8 +42,38 @@ class ScrewtapeInterpreterTest {
     assertEquals(expectedMap, actualMap);
   }
 
-  
+     @Test
+  void testNestedBracketMap2() {
+    // Arrange
+    ScrewtapeInterpreter interpreter = new ScrewtapeInterpreter();
+    String program = "[]";
 
+    Map<Integer, Integer> expectedMap = new HashMap<>();
+    expectedMap.put(1, 0);
+   
+
+    Map<Integer, Integer> actualMap = interpreter.bracketMap(program);
+
+    assertEquals(expectedMap, actualMap);
+  }
+  
+     @Test
+     void testNestedBracketMap3() {
+    // Arrange
+    ScrewtapeInterpreter interpreter = new ScrewtapeInterpreter();
+    String program = ">[+>[+-]<]";
+
+    Map<Integer, Integer> expectedMap = new HashMap<>();
+    expectedMap.put(9, 1);
+    expectedMap.put(7, 4);
+   
+
+    Map<Integer, Integer> actualMap = interpreter.bracketMap(program);
+
+    assertEquals(expectedMap, actualMap);
+  }
+
+  //wave #4
   @Test
   void testAdd() {
     // Arrange

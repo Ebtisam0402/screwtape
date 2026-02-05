@@ -158,12 +158,16 @@ public class ScrewtapeInterpreter {
     // TODO: Implement this
     // If you get stuck, you can look at hint.md for a hint
     //
+
     int instructionPointer = 0; // index
-    String outputString = "";
+    StringBuilder outputString = new StringBuilder();
 
       tapePointer = tapeHead;
 
+      Map<Integer, Integer> brackets = bracketMap(program);
+
         while(instructionPointer < program.length()){
+          Node newNode = new Node (0);
 
        if (program.charAt(instructionPointer) == '+') {
           tapePointer.value++;
@@ -173,15 +177,42 @@ public class ScrewtapeInterpreter {
           tapePointer.value--;
        }
 
+       if (program.charAt(instructionPointer) == '>') {
+          if(tapePointer.next == null){
+            tapePointer.next = newNode;
+            newNode.prev = tapePointer;
+          };
+          tapePointer = tapePointer.next;
+       }
+
+         if (program.charAt(instructionPointer) == '<') {
+          if(tapePointer.prev == null){
+            tapePointer.prev = newNode;
+            tapePointer.prev.next = tapePointer;
+            tapeHead = tapePointer.prev;
+          };
+          tapePointer = tapePointer.prev;
+       }
+
+       if (program.charAt(instructionPointer) == '.'){
+        outputString.append((char) tapePointer.value);
+       }
+
+      if (program.charAt(instructionPointer) == ']') {
+          if(tapePointer.value != 0){
+            instructionPointer = brackets.get(instructionPointer);
+          }
+       }
+
        instructionPointer++;
     
     }
     
-  
+    //StringBuilder outputString =
     // ... So on for every instruction type
 
     // instructionPointer++
 
-    return outputString;
+    return outputString.toString();
   }
 }
