@@ -131,7 +131,7 @@ public class ScrewtapeInterpreter {
     if (!openings.isEmpty()){
       throw new IllegalArgumentException("opening brackets are more than the closing brackets");
     }
-    
+
     return matchingBracket;
   }
 
@@ -157,6 +157,31 @@ public class ScrewtapeInterpreter {
   public String execute(String program) {
     // TODO: Implement this
     // If you get stuck, you can look at hint.md for a hint
-    return null;
+    //
+    int instructionPointer = 0; // index
+    String outputString = "";
+
+      tapePointer = tapeHead;
+
+        while(instructionPointer < program.length()){
+
+       if (program.charAt(instructionPointer) == '+') {
+          tapePointer.value++;
+       }
+       
+      if (program.charAt(instructionPointer) == '-') {
+          tapePointer.value--;
+       }
+
+       instructionPointer++;
+    
+    }
+    
+  
+    // ... So on for every instruction type
+
+    // instructionPointer++
+
+    return outputString;
   }
 }
